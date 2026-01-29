@@ -33,8 +33,3 @@ See the complete design workspace, all screens, components, and dev resources:
 ---
 
 ## Features
-
-- Jetpack Compose-based UI with Material Design 3.
-- Modular architecture for easy feature expansion.
-- Prepared for unit and instrumentation testing.
-- Edge-to-edge UI support and modern Android components.
