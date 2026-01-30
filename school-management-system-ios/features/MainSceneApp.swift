@@ -1,10 +1,10 @@
 import SwiftUI
 
 @main
-struct AppMain: App {
+struct MainSceneApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainSceneView()
         }
     }
 }

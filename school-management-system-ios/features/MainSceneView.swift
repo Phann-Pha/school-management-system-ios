@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct MainSceneView: View {
     var body: some View {
         GeometryReader(content: { _ in
             ZStack {
@@ -23,5 +23,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MainSceneView()
 }
