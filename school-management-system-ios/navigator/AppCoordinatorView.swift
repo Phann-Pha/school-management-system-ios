@@ -8,7 +8,7 @@ struct AppCoordinatorView: View {
     var body: some View {
         switch coordinator.current {
         case .splash:
-            SplashContentView(coordinator: coordinator)
+            SplashView(coordinator: coordinator)
         case .main:
             MainContentView()
         }
