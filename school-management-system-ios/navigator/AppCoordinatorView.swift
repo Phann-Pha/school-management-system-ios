@@ -10,7 +10,7 @@ struct AppCoordinatorView: View {
         case .splash:
             SplashView(coordinator: coordinator)
         case .main:
-            MainContentView()
+            OnboardingView(viewmodel: OnboardingViewModel(usecase: QueryOnboardingUseCase(service: OnboardingService())))
         }
     }
 }
