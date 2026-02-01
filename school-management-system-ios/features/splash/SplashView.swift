@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct SplashContentView: View {
+struct SplashView: View {
     @State private var scale = 0.5
     @State private var opacity = 0.0
     @ObservedObject var coordinator: AppCoordinator

@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct MainOnboardView: View {
+struct OnboardView: View {
     var body: some View {
         
     }
