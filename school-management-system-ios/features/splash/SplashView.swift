@@ -12,7 +12,7 @@ struct SplashView: View {
                 VStack(alignment: .center) {
                     Spacer()
 
-                    Image("Logo")
+                    Image("company_logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: size, height: size)
