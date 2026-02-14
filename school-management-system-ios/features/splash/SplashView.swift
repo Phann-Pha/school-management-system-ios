@@ -10,15 +10,14 @@ struct SplashView: View {
             ZStack {
                 Color(UIColor(resource: .white)).ignoresSafeArea(edges: .all)
                 VStack(alignment: .center) {
-                    Spacer()
-
-                    Image("company_logo")
+                    
+                    Image("splash-screen-icon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: size, height: size)
+                        .padding(.bottom, 32)
 
-                    Spacer()
-                    Text("1.0.0").font(.system(size: 13, weight: .none))
+                    Text("Company Name").font(.system(size: 13, weight: .none))
                 }
             }
             .onAppear {
