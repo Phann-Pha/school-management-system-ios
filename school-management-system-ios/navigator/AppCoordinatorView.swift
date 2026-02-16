@@ -8,7 +8,7 @@ struct AppCoordinatorView: View {
     var body: some View {
         switch coordinator.current {
         case .splash:
-            SplashView()
+            GettingStartedView()
         case .main:
             OnboardingView(viewmodel: OnboardingViewModel(usecase: QueryOnboardingUseCase(service: OnboardingService())))
         }
