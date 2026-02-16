@@ -14,19 +14,21 @@ struct SelectingLanguageView: View {
                         .ignoresSafeArea(.all)
 
                     VStack(alignment: .center) {
-                        HeaderContentView() {
+                        HeaderContentView {
                             // back here
                         }
                         Spacer()
                         ContentView(size: proxy.size.width * 0.7)
                         Spacer()
-                        FooterContentView()
+                        FooterContentView { lang in
+                            switch lang {
+                            case LangEnamStatus.EN: is_en = true; is_kh = false
+                            case LangEnamStatus.KH: is_kh = true; is_en = false
+                            }
+                        }
                     }
                 }
             }
-            .navigationDestination(for: String.self, destination: { _ in
-                GettingStartedView()
-            })
         }
     }
 
@@ -47,7 +49,7 @@ struct SelectingLanguageView: View {
                 .padding(10)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
-            
+
         }.buttonStyle(AnimatedButtonStyle())
     }
 
@@ -62,7 +64,7 @@ struct SelectingLanguageView: View {
     }
 
     @ViewBuilder
-    private func FooterContentView() -> some View {
+    private func FooterContentView(callback: @escaping (LangEnamStatus) -> Void) -> some View {
         VStack(alignment: .center) {
             HStack {
                 Text("Please select your language.")
@@ -74,14 +76,8 @@ struct SelectingLanguageView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            ButtonKhmer(isSelected: is_kh) {
-                is_kh = true
-                is_en = false
-            }
-            ButtonEnglish(isSelected: is_en) {
-                is_en = true
-                is_kh = false
-            }
+            ButtonKhmer(isSelected: is_kh, callback: { callback(LangEnamStatus.KH) })
+            ButtonEnglish(isSelected: is_en, callback: { callback(LangEnamStatus.EN) })
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 45)
