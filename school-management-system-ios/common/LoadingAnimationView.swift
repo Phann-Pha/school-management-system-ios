@@ -14,7 +14,7 @@ struct LoadingAnimationView: View {
                 .stroke(Color(UIColor(resource: .primary)), style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 .frame(width: 60, height: 60)
                 .rotationEffect(Angle(degrees: rotate ? 360 : 0))
-                .animation(.linear(duration: 0.85).repeatForever(autoreverses: false), value: rotate)
+                .animation(.linear(duration: 1).repeatForever(autoreverses: false), value: rotate)
                 .onAppear { rotate = true }
         }
     }
