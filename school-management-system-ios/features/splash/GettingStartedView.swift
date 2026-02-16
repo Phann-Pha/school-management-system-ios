@@ -2,9 +2,6 @@ import Lottie
 import SwiftUI
 
 struct GettingStartedView: View {
-    @State private var is_skip: Bool = false
-    @State private var is_clicked_get_started: Bool = false
-
     var body: some View {
         GeometryReader { proxy in
             let size = proxy.size.width * 0.7
@@ -12,31 +9,40 @@ struct GettingStartedView: View {
                 Color(UIColor(resource: .white))
                     .opacity(1)
                     .ignoresSafeArea(.all)
-                
+
                 VStack(alignment: .center) {
-                    HeaderContentView()
+                    HeaderContentView {
+                        // skip here
+                    }
                     Spacer()
                     ContentView(size: size)
                     Spacer()
-                    FooterContentView()
+                    FooterContentView {
+                        // your code here
+                    }
                 }
             }
         }
     }
 
     @ViewBuilder
-    private func HeaderContentView() -> some View {
+    private func HeaderContentView(callback: @escaping () -> Void) -> some View {
         HStack {
             Spacer()
-            Text("Skip")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundColor(Color(UIColor(resource: .black)))
-                .lineLimit(1)
-                .onTapGesture(perform: {
-                    is_skip.toggle()
-                })
+            ButtonSkip(text: "Skip", callback: callback)
         }
         .padding([.top, .leading, .trailing], 24)
+    }
+
+    @ViewBuilder
+    private func ButtonSkip(text: String, callback: @escaping () -> Void) -> some View {
+        Button(action: callback) {
+            Text(text)
+                .font(.system(size: 16, weight: .medium))
+                .foregroundColor(Color(UIColor(resource: .black)))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
+        }.buttonStyle(AnimatedButtonStyle())
     }
 
     @ViewBuilder
@@ -50,7 +56,7 @@ struct GettingStartedView: View {
     }
 
     @ViewBuilder
-    private func FooterContentView() -> some View {
+    private func FooterContentView(callback: @escaping () -> Void) -> some View {
         VStack(alignment: .center) {
             HStack {
                 Text("Your smart solution for fast, accurate attendence tracking. Let's a quick tour!")
@@ -62,22 +68,24 @@ struct GettingStartedView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            GetStartedButton(text: "Get Started")
+            GetStartedButton(text: "Get Started", callback: callback)
         }
+        .padding(.horizontal, 24)
         .padding(.bottom, 45)
     }
 
     @ViewBuilder
-    private func GetStartedButton(text: String) -> some View {
-        Button(action: { is_clicked_get_started.toggle() }, label: {
+    private func GetStartedButton(text: String, callback: @escaping () -> Void) -> some View {
+        Button(action: callback) {
             Text(text)
                 .font(.system(size: 16, weight: .medium))
-                .frame(maxWidth: .infinity, maxHeight: 60)
+                .frame(maxWidth: .infinity)
+                .frame(height: 60)
                 .foregroundColor(Color(UIColor(resource: .white)))
                 .background(Color(UIColor(resource: .primary)))
-                .cornerRadius(12)
-                .padding(.horizontal, 24)
-        })
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
+        }.buttonStyle(AnimatedButtonStyle())
     }
 }
 
