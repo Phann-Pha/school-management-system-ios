@@ -22,7 +22,7 @@ struct GettingStartedView: View {
                     Spacer()
                     VStack(alignment: .center) {
                         HStack {
-                            Text("Your samrt solution for fast, accurate attendence tracking. Let's a quick tour!")
+                            Text("Your smart solution for fast, accurate attendence tracking. Let's a quick tour!")
                                 .multilineTextAlignment(.center)
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(Color(UIColor(resource: .black)))
