@@ -2,7 +2,7 @@ import Lottie
 import SwiftUI
 
 struct SelectingLanguageView: View {
-    @State private var isLoading = false
+    @State private var dismiss: Bool = false
 
     @State private var is_en: Bool = true
     @State private var is_kh: Bool = false
@@ -26,17 +26,19 @@ struct SelectingLanguageView: View {
                         Spacer()
                         FooterContentView { lang in
                             switch lang {
-                            case LangEnamStatus.EN: is_en = true; is_kh = false; isLoading = true
-                            case LangEnamStatus.KH: is_kh = true; is_en = false; isLoading = true
+                            case LangEnamStatus.EN: is_en = true; is_kh = false
+                            case LangEnamStatus.KH: is_kh = true; is_en = false
                             }
+                            dismiss = true
                         }
                     }
                 }
 
                 // loading
-                if isLoading {
-                    withAnimation(.linear(duration: 2.0)) {
-                        LoadingAnimationView()
+                LoadingAnimationView(dismiss: $dismiss).onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                        dismiss = false
+                        is_active = true
                     }
                 }
 
