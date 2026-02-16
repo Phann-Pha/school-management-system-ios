@@ -9,7 +9,10 @@ struct GettingStartedView: View {
         GeometryReader { proxy in
             let size = proxy.size.width * 0.7
             ZStack {
-                Color(UIColor(resource: .white)).ignoresSafeArea(edges: .all)
+                Color(UIColor(resource: .white))
+                    .opacity(1)
+                    .ignoresSafeArea(.all)
+                
                 VStack(alignment: .center) {
                     HeaderContentView()
                     Spacer()
