@@ -5,6 +5,8 @@ struct SelectingLanguageView: View {
     @State private var is_en: Bool = true
     @State private var is_kh: Bool = false
 
+    @State private var is_active: Bool = false
+
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
@@ -22,13 +24,13 @@ struct SelectingLanguageView: View {
                         Spacer()
                         FooterContentView { lang in
                             switch lang {
-                            case LangEnamStatus.EN: is_en = true; is_kh = false
-                            case LangEnamStatus.KH: is_kh = true; is_en = false
+                            case LangEnamStatus.EN: is_en = true; is_kh = false; is_active.toggle()
+                            case LangEnamStatus.KH: is_kh = true; is_en = false; is_active.toggle()
                             }
                         }
                     }
                 }
-            }
+            }.navigationDestination(isPresented: $is_active, destination: { GettingStartedView() })
         }
     }
 
