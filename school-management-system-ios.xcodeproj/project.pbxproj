@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EFA6B1652F4057D500CC4FEF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = EFA6B1642F4057D500CC4FEF /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		EFA6B0C72F27C66C00CC4FEF /* school-management-system-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "school-management-system-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA6B1652F4057D500CC4FEF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "school-management-system-ios";
 			packageProductDependencies = (
+				EFA6B1642F4057D500CC4FEF /* Lottie */,
 			);
 			productName = "school-management-system-ios";
 			productReference = EFA6B0C72F27C66C00CC4FEF /* school-management-system-ios.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = EFA6B0BE2F27C66C00CC4FEF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EFA6B1632F4057D500CC4FEF /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EFA6B0C82F27C66C00CC4FEF /* Products */;
 			projectDirPath = "";
@@ -332,6 +341,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EFA6B1632F4057D500CC4FEF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EFA6B1642F4057D500CC4FEF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFA6B1632F4057D500CC4FEF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EFA6B0BF2F27C66C00CC4FEF /* Project object */;
 }

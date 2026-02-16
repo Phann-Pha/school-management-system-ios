@@ -1,30 +1,38 @@
 
+import Lottie
 import SwiftUI
 
 struct SplashView: View {
-    @ObservedObject var coordinator: AppCoordinator
-    
     var body: some View {
         GeometryReader { proxy in
-            let size = proxy.size.height * 0.25
+            let size = proxy.size.width * 0.7
             ZStack {
                 Color(UIColor(resource: .white)).ignoresSafeArea(edges: .all)
                 VStack(alignment: .center) {
                     Spacer()
 
                     VStack(alignment: .center) {
-                        Image("splash-screen-icon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: size, height: size)
-                            .padding(.bottom, 32)
+                        LottieView(animation: .named("exam_anim.json"))
+                            .playing(loopMode: .loop)
                     }
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: size, height: size)
 
                     Spacer()
                     VStack(alignment: .center) {
+                        HStack {
+                            Text("Your samrt solution for fast, accurate attendence tracking. Let's a quick tour!")
+                                .multilineTextAlignment(.center)
+                                .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(Color(UIColor(resource: .black)))
+                                .lineSpacing(8)
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.bottom, 32)
+
                         SplashButtonView(text: "Get Started")
                     }
-                    .padding(.bottom, 32)
+                    .padding(.bottom, 45)
                 }
             }
         }

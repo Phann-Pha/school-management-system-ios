@@ -6,10 +6,10 @@ struct SplashButtonView: View {
     var body: some View {
         Button(action: {}, label: {
             Text(text)
-                .font(.system(size: 14, weight: .medium))
-                .frame(maxWidth: .infinity, maxHeight: 56)
+                .font(.system(size: 16, weight: .medium))
+                .frame(maxWidth: .infinity, maxHeight: 60)
                 .foregroundColor(Color(UIColor(resource: .white)))
-                .background(Color(UIColor(resource: .black)))
+                .background(Color(UIColor(resource: .primary)))
                 .cornerRadius(12)
                 .padding(.horizontal, 24)
         })
