@@ -22,7 +22,7 @@ struct GettingStartedView: View {
                     }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 
     @ViewBuilder
