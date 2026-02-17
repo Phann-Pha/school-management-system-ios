@@ -2,8 +2,7 @@ import Lottie
 import SwiftUI
 
 struct SelectingLanguageView: View {
-    @State private var is_en: Bool = true
-    @State private var is_kh: Bool = false
+    @State private var lang: LangEnamStatus = .EN
 
     @State private var is_active: Bool = false
 
@@ -22,13 +21,9 @@ struct SelectingLanguageView: View {
                         Spacer()
                         ContentView(size: proxy.size.width * 0.7)
                         Spacer()
-                        FooterContentView { lang in
-                            switch lang {
-                            case LangEnamStatus.EN: is_en = true; is_kh = false
-                            case LangEnamStatus.KH: is_kh = true; is_en = false
-                            }
-
-                            is_active = true
+                        FooterContentView(language: lang) { lang in
+                            self.lang = lang
+                            // is_active = true
                         }
                     }
                 }
@@ -68,7 +63,10 @@ struct SelectingLanguageView: View {
     }
 
     @ViewBuilder
-    private func FooterContentView(callback: @escaping (LangEnamStatus) -> Void) -> some View {
+    private func FooterContentView(language: LangEnamStatus, callback: @escaping (LangEnamStatus) -> Void) -> some View {
+        @State var en: Bool = if language == .EN { true } else { false }
+        @State var kh: Bool = if language == .KH { true } else { false }
+
         VStack(alignment: .center) {
             HStack {
                 Text("Please select your language.")
@@ -80,8 +78,8 @@ struct SelectingLanguageView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            ButtonKhmer(isSelected: is_kh, callback: { callback(LangEnamStatus.KH) })
-            ButtonEnglish(isSelected: is_en, callback: { callback(LangEnamStatus.EN) })
+            ButtonKhmer(isSelected: kh, callback: { callback(LangEnamStatus.KH) })
+            ButtonEnglish(isSelected: en, callback: { callback(LangEnamStatus.EN) })
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 45)
