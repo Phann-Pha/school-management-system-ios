@@ -3,8 +3,7 @@ import SwiftUI
 
 struct SelectingLanguageView: View {
     @State private var lang: LangEnamStatus = .EN
-
-    @State private var is_active: Bool = false
+    @State private var isSelected: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -23,11 +22,11 @@ struct SelectingLanguageView: View {
                         Spacer()
                         FooterContentView(language: lang) { lang in
                             self.lang = lang
-                            // is_active = true
+                            self.isSelected = true
                         }
                     }
                 }
-            }.navigationDestination(isPresented: $is_active, destination: { GettingStartedView() })
+            }.navigationDestination(isPresented: $isSelected, destination: { GettingStartedView() })
         }
     }
 
