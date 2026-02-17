@@ -2,9 +2,11 @@ import Lottie
 import SwiftUI
 
 struct GettingStartedView: View {
+    
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
     var body: some View {
         GeometryReader { proxy in
-            let size = proxy.size.width * 0.7
             ZStack {
                 Color(UIColor(resource: .white))
                     .opacity(1)
@@ -12,17 +14,18 @@ struct GettingStartedView: View {
 
                 VStack(alignment: .center) {
                     HeaderContentView {
-                        // skip here
+                        // dismiss
+                        presentationMode.wrappedValue.dismiss()
                     }
                     Spacer()
-                    ContentView(size: size)
+                    ContentView(size: proxy.size.width * 0.7)
                     Spacer()
                     FooterContentView {
                         // your code here
                     }
                 }
             }
-        }.navigationBarBackButtonHidden(true)
+        }.navigationBarBackButtonHidden()
     }
 
     @ViewBuilder
