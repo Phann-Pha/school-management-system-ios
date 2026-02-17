@@ -68,7 +68,7 @@ struct SelectingLanguageView: View {
 
         VStack(alignment: .center) {
             HStack {
-                Text("Please select your language.")
+                Text(NSLocalizedString("please_selecting_your_language", comment: ""))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))

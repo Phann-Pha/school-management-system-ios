@@ -32,7 +32,7 @@ struct GettingStartedView: View {
     private func HeaderContentView(callback: @escaping () -> Void) -> some View {
         HStack {
             Spacer()
-            ButtonSkip(text: "Skip", callback: callback)
+            ButtonSkip(text: NSLocalizedString("skip", comment: ""), callback: callback)
         }
         .padding([.top, .leading, .trailing], 24)
     }
@@ -43,9 +43,8 @@ struct GettingStartedView: View {
             Text(text)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(Color(UIColor(resource: .black)))
-                .clipShape(RoundedRectangle(cornerRadius: 16))
 
-        }.buttonStyle(AnimatedButtonStyle())
+        }.buttonStyle(AnimatedButtonStyle(cornerRadius: 0.0))
     }
 
     @ViewBuilder
@@ -62,7 +61,7 @@ struct GettingStartedView: View {
     private func FooterContentView(callback: @escaping () -> Void) -> some View {
         VStack(alignment: .center) {
             HStack {
-                Text("Your smart solution for fast, accurate attendence tracking. Let's a quick tour!")
+                Text(NSLocalizedString("description_get_starting", comment: ""))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))
@@ -71,7 +70,7 @@ struct GettingStartedView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            GetStartedButton(text: "Get Started", callback: callback)
+            GetStartedButton(text: NSLocalizedString("get_started", comment: ""), callback: callback)
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 45)
