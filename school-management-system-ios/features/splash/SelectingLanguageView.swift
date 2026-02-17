@@ -2,8 +2,6 @@ import Lottie
 import SwiftUI
 
 struct SelectingLanguageView: View {
-    @State private var dismiss: Bool = false
-
     @State private var is_en: Bool = true
     @State private var is_kh: Bool = false
 
@@ -15,7 +13,7 @@ struct SelectingLanguageView: View {
                 ZStack {
                     Color(UIColor(resource: .white))
                         .opacity(1)
-                        .ignoresSafeArea(.all)
+                        .ignoresSafeArea()
 
                     VStack(alignment: .center) {
                         HeaderContentView {
@@ -29,19 +27,11 @@ struct SelectingLanguageView: View {
                             case LangEnamStatus.EN: is_en = true; is_kh = false
                             case LangEnamStatus.KH: is_kh = true; is_en = false
                             }
-                            dismiss = true
+
+                            is_active = true
                         }
                     }
                 }
-
-                // loading
-                LoadingAnimationView(dismiss: $dismiss).onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                        dismiss = false
-                        is_active = true
-                    }
-                }
-
             }.navigationDestination(isPresented: $is_active, destination: { GettingStartedView() })
         }
     }

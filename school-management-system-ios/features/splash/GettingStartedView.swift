@@ -8,7 +8,7 @@ struct GettingStartedView: View {
             ZStack {
                 Color(UIColor(resource: .white))
                     .opacity(1)
-                    .ignoresSafeArea(.all)
+                    .ignoresSafeArea()
 
                 VStack(alignment: .center) {
                     HeaderContentView {
