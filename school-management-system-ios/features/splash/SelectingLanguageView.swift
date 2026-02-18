@@ -2,8 +2,19 @@ import Lottie
 import SwiftUI
 
 struct SelectingLanguageView: View {
-    @State private var lang: LangEnamStatus = .EN
+    @State private var lang: LangEnamStatus = LangEnamStatus.EN
     @State private var isSelected: Bool = false
+
+    @ObservedObject var localizationManager: LocalizationManager
+    init(localizationManager: LocalizationManager) {
+        self.localizationManager = localizationManager
+
+        lang = switch localizationManager.currentLanguage {
+        case LangEnamStatus.EN.value: .EN
+        case LangEnamStatus.KH.value: .KH
+        default: .EN
+        }
+    }
 
     var body: some View {
         NavigationStack {
@@ -20,7 +31,7 @@ struct SelectingLanguageView: View {
                         Spacer()
                         FooterContentView(language: lang) { lang in
                             self.lang = lang
-                            self.isSelected = true
+                            // self.isSelected = true
                         }
                     }
                 }
@@ -67,6 +78,7 @@ struct SelectingLanguageView: View {
         VStack(alignment: .center) {
             HStack {
                 Text(String(localized: .pleaseSelectYourLanguage))
+                    .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))
@@ -86,6 +98,7 @@ struct SelectingLanguageView: View {
     private func ButtonKhmer(isSelected: Bool, callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
             Text(String(localized: .khmer))
+                .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
@@ -100,6 +113,7 @@ struct SelectingLanguageView: View {
     private func ButtonEnglish(isSelected: Bool, callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
             Text(String(localized: .english))
+                .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
@@ -109,8 +123,4 @@ struct SelectingLanguageView: View {
 
         }.buttonStyle(AnimatedButtonStyle())
     }
-}
-
-#Preview {
-    SelectingLanguageView()
 }

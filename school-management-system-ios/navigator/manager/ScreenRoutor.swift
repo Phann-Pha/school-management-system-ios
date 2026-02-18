@@ -2,6 +2,6 @@
 import SwiftUI
 
 enum ScreenRoutor {
-    case splash
-    case main
+    case MAIN
+    case SELECT_LANGUAGE
 }

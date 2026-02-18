@@ -2,17 +2,15 @@ import SwiftUI
 
 @main
 struct ApplicationScene: App {
-    @AppStorage("SelectedLangeuage") var selectedLanguage: String = Locale.current.language.languageCode?.identifier ?? "kh"
-
-    init() {
-       // Bundle.setAccessibilityLanguage(selectedLanguage)
-    }
-
     @StateObject private var coordinator = AppCoordinator()
+    @StateObject private var localizationManager: LocalizationManager = LocalizationManager()
 
     var body: some Scene {
         WindowGroup {
-            AppCoordinatorView(coordinator: coordinator)
+            AppCoordinatorView(
+                localizationManager: localizationManager,
+                coordinator: coordinator
+            )
         }
     }
 }
