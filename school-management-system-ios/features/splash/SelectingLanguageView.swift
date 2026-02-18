@@ -32,7 +32,7 @@ struct SelectingLanguageView: View {
                         FooterContentView(language: language) { value in
                             self.language = value
                             localize.onSetChangeLangue(value.value)
-                            // self.isSelected = true
+                            self.isSelected = true
                         }
                         .environment(\.locale, localize.locale)
                     }
