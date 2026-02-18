@@ -2,19 +2,10 @@ import Lottie
 import SwiftUI
 
 struct SelectingLanguageView: View {
-    
     @ObservedObject var localize: LocalizationManager
-    @State private var language: LangEnamStatus = LangEnamStatus.EN
+    
+    @Binding var language: LangEnamStatus
     @State private var isSelected: Bool = false
-
-    init(localize: LocalizationManager) {
-        self.localize = localize
-        self.language = switch localize.current {
-        case LangEnamStatus.EN.value: .EN
-        case LangEnamStatus.KH.value: .KH
-        default: .EN
-        }
-    }
 
     var body: some View {
         NavigationStack {
