@@ -8,6 +8,7 @@ struct ApplicationScene: App {
     var body: some Scene {
         WindowGroup {
             AppCoordinatorView(coordinator: coordinator, localize: localize)
+                .environment(\.locale, localize.locale)
         }
     }
 }

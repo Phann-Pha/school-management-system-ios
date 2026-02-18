@@ -26,15 +26,15 @@ struct GettingStartedView: View {
     private func HeaderContentView(callback: @escaping () -> Void) -> some View {
         HStack {
             Spacer()
-            ButtonSkip(text: String(localized: .skip), callback: callback)
+            ButtonSkip(callback: callback)
         }
         .padding([.top, .leading, .trailing], 24)
     }
 
     @ViewBuilder
-    private func ButtonSkip(text: String, callback: @escaping () -> Void) -> some View {
+    private func ButtonSkip(callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
-            Text(text)
+            Text(LocalizedStringKey("Skip"))
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(Color(UIColor(resource: .black)))
 
@@ -55,7 +55,7 @@ struct GettingStartedView: View {
     private func FooterContentView(callback: @escaping () -> Void) -> some View {
         VStack(alignment: .center) {
             HStack {
-                Text(String(localized: .yourSmartSolutionForFastAccurateAttendanceTrackingLetsTakeAQuickTour))
+                Text(LocalizedStringKey("GetStartedDescription"))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))
@@ -73,7 +73,7 @@ struct GettingStartedView: View {
     @ViewBuilder
     private func GetStartedButton(text: String, callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
-            Text(text)
+            Text(LocalizedStringKey("GetStarted"))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)

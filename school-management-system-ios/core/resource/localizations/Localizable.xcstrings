@@ -1,29 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "English" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "English"
-          }
-        },
-        "km" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "English"
-          }
-        },
-        "km-KH" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "English"
-          }
-        }
-      }
-    },
     "GetStarted" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -47,29 +24,53 @@
         }
       }
     },
-    "Hello, World!" : {
+    "GetStartedDescription" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hello, Wold!"
+            "value" : "Your smart solution for fast, accurate attendance tracking. Let’s take a quick tour!"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "សួស្តី"
+            "value" : "ដំណោះស្រាយដ៏ឆ្លាតវៃរបស់អ្នកសម្រាប់ការតាមដានវត្តមានលឿន និងត្រឹមត្រូវ។ តោះដំណើរកម្សាន្តមួយភ្លែត!"
           }
         },
         "km-KH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "សួស្តី"
+            "value" : "ដំណោះស្រាយដ៏ឆ្លាតវៃរបស់អ្នកសម្រាប់ការតាមដានវត្តមានលឿន និងត្រឹមត្រូវ។ តោះដំណើរកម្សាន្តមួយភ្លែត!"
           }
         }
       }
     },
-    "Khmer" : {
+    "LanguageEnglish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "km-KH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        }
+      }
+    },
+    "LanguageKhmer" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -92,7 +93,7 @@
         }
       }
     },
-    "Please select your language." : {
+    "LanguagePleaseSelectYour" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -134,29 +135,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "បន្ទាប់"
-          }
-        }
-      }
-    },
-    "Your smart solution for fast, accurate attendance tracking. Let’s take a quick tour!" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your smart solution for fast, accurate attendance tracking. Let’s take a quick tour!"
-          }
-        },
-        "km" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ដំណោះស្រាយដ៏ឆ្លាតវៃរបស់អ្នកសម្រាប់ការតាមដានវត្តមានលឿន និងត្រឹមត្រូវ។ តោះដំណើរកម្សាន្តមួយភ្លែត!"
-          }
-        },
-        "km-KH" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ដំណោះស្រាយដ៏ឆ្លាតវៃរបស់អ្នកសម្រាប់ការតាមដានវត្តមានលឿន និងត្រឹមត្រូវ។ តោះដំណើរកម្សាន្តមួយភ្លែត!"
           }
         }
       }

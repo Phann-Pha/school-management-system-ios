@@ -11,9 +11,7 @@ struct MainContentView: View {
                     .ignoresSafeArea(edges: .all)
 
                 VStack {
-                    Text("Hello, World!")
-                        .font(.body)
-                        .foregroundStyle(Color(UIColor(resource: .black)))
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, 24)
