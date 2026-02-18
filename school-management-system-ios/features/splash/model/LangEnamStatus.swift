@@ -4,7 +4,7 @@ enum LangEnamStatus {
     var value: String {
         switch self {
         case .EN: return "en"
-        case .KH: return "kh"
+        case .KH: return "km-KH"
         }
     }
 }

@@ -2,14 +2,14 @@ import Lottie
 import SwiftUI
 
 struct SelectingLanguageView: View {
-    @State private var lang: LangEnamStatus = LangEnamStatus.EN
+    
+    @ObservedObject var localize: LocalizationManager
+    @State private var language: LangEnamStatus = LangEnamStatus.EN
     @State private var isSelected: Bool = false
 
-    @ObservedObject var localizationManager: LocalizationManager
-    init(localizationManager: LocalizationManager) {
-        self.localizationManager = localizationManager
-
-        lang = switch localizationManager.currentLanguage {
+    init(localize: LocalizationManager) {
+        self.localize = localize
+        self.language = switch localize.current {
         case LangEnamStatus.EN.value: .EN
         case LangEnamStatus.KH.value: .KH
         default: .EN
@@ -29,10 +29,12 @@ struct SelectingLanguageView: View {
                         Spacer()
                         ContentView(size: proxy.size.width * 0.7)
                         Spacer()
-                        FooterContentView(language: lang) { lang in
-                            self.lang = lang
+                        FooterContentView(language: language) { value in
+                            self.language = value
+                            localize.onSetChangeLangue(value.value)
                             // self.isSelected = true
                         }
+                        .environment(\.locale, localize.locale)
                     }
                 }
             }.navigationDestination(isPresented: $isSelected, destination: { GettingStartedView() })
@@ -77,8 +79,7 @@ struct SelectingLanguageView: View {
 
         VStack(alignment: .center) {
             HStack {
-                Text(String(localized: .pleaseSelectYourLanguage))
-                    .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
+                Text(LocalizedStringKey("Please select your language."))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))
@@ -97,8 +98,7 @@ struct SelectingLanguageView: View {
     @ViewBuilder
     private func ButtonKhmer(isSelected: Bool, callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
-            Text(String(localized: .khmer))
-                .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
+            Text(LocalizedStringKey("Khmer"))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
@@ -112,8 +112,7 @@ struct SelectingLanguageView: View {
     @ViewBuilder
     private func ButtonEnglish(isSelected: Bool, callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
-            Text(String(localized: .english))
-                .environment(\.locale, Locale(identifier: localizationManager.currentLanguage))
+            Text(LocalizedStringKey("Khmer"))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)

@@ -10,6 +10,12 @@
             "value" : "English"
           }
         },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
         "km-KH" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25,6 +31,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get Started"
+          }
+        },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ចាប់ផ្តើម"
           }
         },
         "km-KH" : {
@@ -43,6 +55,12 @@
             "value" : "Hello, Wold!"
           }
         },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "សួស្តី"
+          }
+        },
         "km-KH" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55,6 +73,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ភាសារខ្មែរ"
+          }
+        },
+        "km" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ភាសារខ្មែរ"
@@ -77,6 +101,12 @@
             "value" : "Please select your language."
           }
         },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "សូមជ្រើសរើសភាសារបស់អ្នក"
+          }
+        },
         "km-KH" : {
           "stringUnit" : {
             "state" : "translated",
@@ -94,6 +124,12 @@
             "value" : "Skip"
           }
         },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "បន្ទាប់"
+          }
+        },
         "km-KH" : {
           "stringUnit" : {
             "state" : "translated",
@@ -109,6 +145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your smart solution for fast, accurate attendance tracking. Let’s take a quick tour!"
+          }
+        },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ដំណោះស្រាយដ៏ឆ្លាតវៃរបស់អ្នកសម្រាប់ការតាមដានវត្តមានលឿន និងត្រឹមត្រូវ។ តោះដំណើរកម្សាន្តមួយភ្លែត!"
           }
         },
         "km-KH" : {
