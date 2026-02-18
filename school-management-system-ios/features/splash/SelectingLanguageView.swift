@@ -14,9 +14,7 @@ struct SelectingLanguageView: View {
                         .ignoresSafeArea()
 
                     VStack(alignment: .center) {
-                        HeaderContentView {
-                            // back here
-                        }
+                        HeaderContentView {}
                         Spacer()
                         ContentView(size: proxy.size.width * 0.7)
                         Spacer()
@@ -68,7 +66,7 @@ struct SelectingLanguageView: View {
 
         VStack(alignment: .center) {
             HStack {
-                Text(NSLocalizedString("please_selecting_your_language", comment: ""))
+                Text(String(localized: .pleaseSelectYourLanguage))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))
@@ -87,7 +85,7 @@ struct SelectingLanguageView: View {
     @ViewBuilder
     private func ButtonKhmer(isSelected: Bool, callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
-            Text("ភាសាខ្មែរ")
+            Text(String(localized: .khmer))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
@@ -101,7 +99,7 @@ struct SelectingLanguageView: View {
     @ViewBuilder
     private func ButtonEnglish(isSelected: Bool, callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
-            Text("English")
+            Text(String(localized: .english))
                 .font(.system(size: 16, weight: .medium))
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)

@@ -2,7 +2,6 @@ import Lottie
 import SwiftUI
 
 struct GettingStartedView: View {
-    
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     var body: some View {
@@ -13,16 +12,11 @@ struct GettingStartedView: View {
                     .ignoresSafeArea()
 
                 VStack(alignment: .center) {
-                    HeaderContentView {
-                        // dismiss
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                    HeaderContentView { presentationMode.wrappedValue.dismiss() }
                     Spacer()
                     ContentView(size: proxy.size.width * 0.7)
                     Spacer()
-                    FooterContentView {
-                        // your code here
-                    }
+                    FooterContentView {}
                 }
             }
         }.navigationBarBackButtonHidden()
@@ -32,7 +26,7 @@ struct GettingStartedView: View {
     private func HeaderContentView(callback: @escaping () -> Void) -> some View {
         HStack {
             Spacer()
-            ButtonSkip(text: NSLocalizedString("skip", comment: ""), callback: callback)
+            ButtonSkip(text: String(localized: .skip), callback: callback)
         }
         .padding([.top, .leading, .trailing], 24)
     }
@@ -61,7 +55,7 @@ struct GettingStartedView: View {
     private func FooterContentView(callback: @escaping () -> Void) -> some View {
         VStack(alignment: .center) {
             HStack {
-                Text(NSLocalizedString("description_get_starting", comment: ""))
+                Text(String(localized: .yourSmartSolutionForFastAccurateAttendanceTrackingLetsTakeAQuickTour))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))
@@ -70,7 +64,7 @@ struct GettingStartedView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            GetStartedButton(text: NSLocalizedString("get_started", comment: ""), callback: callback)
+            GetStartedButton(text: String(localized: .getStarted), callback: callback)
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 45)
