@@ -8,14 +8,17 @@ struct GettingStartedView: View {
         GeometryReader { proxy in
             ZStack {
                 Color(UIColor(resource: .white))
-                    .opacity(1)
                     .ignoresSafeArea()
 
                 VStack(alignment: .center) {
                     HeaderContentView { presentationMode.wrappedValue.dismiss() }
+                    
                     Spacer()
+                    
                     ContentView(size: proxy.size.width * 0.7)
+                    
                     Spacer()
+                    
                     FooterContentView {}
                 }
             }
