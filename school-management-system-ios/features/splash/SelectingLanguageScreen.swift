@@ -1,7 +1,7 @@
 import Lottie
 import SwiftUI
 
-struct SelectingLanguageView: View {
+struct SelectingLanguageScreen: View {
     @ObservedObject var localize: LocalizationManager
 
     @State private var language: EnamLanguageState = .EN
@@ -32,7 +32,7 @@ struct SelectingLanguageView: View {
                 }
             }
             .navigationDestination(isPresented: $isSelected) {
-                GettingStartedView()
+                GettingStartedScreen()
             }
             .onAppear {
                 language = localize.defaultLanguage

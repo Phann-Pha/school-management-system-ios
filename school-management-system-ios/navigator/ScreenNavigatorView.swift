@@ -13,7 +13,7 @@ struct ScreenNavigatorView: View {
     var body: some View {
         switch navigator.current {
         case .language:
-            SelectingLanguageView(localize: localize)
+            SelectingLanguageScreen(localize: localize)
         case .main:
             OnboardingView(
                 viewmodel: OnboardingViewModel(

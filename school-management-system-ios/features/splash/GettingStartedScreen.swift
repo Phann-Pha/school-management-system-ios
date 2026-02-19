@@ -1,7 +1,7 @@
 import Lottie
 import SwiftUI
 
-struct GettingStartedView: View {
+struct GettingStartedScreen: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     var body: some View {
@@ -86,8 +86,4 @@ struct GettingStartedView: View {
 
         }.buttonStyle(AnimatedButtonStyle())
     }
-}
-
-#Preview {
-    GettingStartedView()
 }
