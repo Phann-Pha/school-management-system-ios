@@ -4,7 +4,7 @@ import SwiftUI
 struct SelectingLanguageView: View {
     @ObservedObject var localize: LocalizationManager
     
-    @Binding var language: LangEnamStatus
+    @State private var language: LangEnamStatus = .EN
     @State private var isSelected: Bool = false
 
     var body: some View {
@@ -20,7 +20,7 @@ struct SelectingLanguageView: View {
                         Spacer()
                         ContentView(size: proxy.size.width * 0.7)
                         Spacer()
-                        FooterContentView(language: language) { value in
+                        FooterContentView(language) { value in
                             self.language = value
                             localize.onSetChangeLangue(value.value)
                             self.isSelected = true
@@ -63,9 +63,9 @@ struct SelectingLanguageView: View {
     }
 
     @ViewBuilder
-    private func FooterContentView(language: LangEnamStatus, callback: @escaping (LangEnamStatus) -> Void) -> some View {
-        @State var en: Bool = if language == .EN { true } else { false }
-        @State var kh: Bool = if language == .KH { true } else { false }
+    private func FooterContentView(_ state: LangEnamStatus, callback: @escaping (LangEnamStatus) -> Void) -> some View {
+        @State var en: Bool = if state == .EN { true } else { false }
+        @State var kh: Bool = if state == .KH { true } else { false }
 
         VStack(alignment: .center) {
             HStack {
