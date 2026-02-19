@@ -4,7 +4,7 @@ import SwiftUI
 struct SelectingLanguageView: View {
     @ObservedObject var localize: LocalizationManager
 
-    @State private var language: LangEnamStatus = .EN
+    @State private var language: EnamLanguageState = .EN
     @State private var isSelected: Bool = false
 
     var body: some View {
@@ -72,7 +72,7 @@ struct SelectingLanguageView: View {
     }
 
     @ViewBuilder
-    private func FooterContentView(_ state: LangEnamStatus, callback: @escaping (LangEnamStatus) -> Void) -> some View {
+    private func FooterContentView(_ state: EnamLanguageState, callback: @escaping (EnamLanguageState) -> Void) -> some View {
         @State var en: Bool = if state == .EN { true } else { false }
         @State var kh: Bool = if state == .KH { true } else { false }
 
@@ -87,8 +87,8 @@ struct SelectingLanguageView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            ButtonKhmer(isSelected: kh, callback: { callback(LangEnamStatus.KH) })
-            ButtonEnglish(isSelected: en, callback: { callback(LangEnamStatus.EN) })
+            ButtonKhmer(isSelected: kh, callback: { callback(EnamLanguageState.KH) })
+            ButtonEnglish(isSelected: en, callback: { callback(EnamLanguageState.EN) })
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 45)
