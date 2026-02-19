@@ -1,25 +1,29 @@
 import Combine
 import Foundation
 
-class LocalizationManager: ObservableObject {
-    @Published var current: String = LangEnamStatus.EN.value
-    @Published var locale: Locale = Locale(identifier: LangEnamStatus.EN.value)
+@MainActor
+final class LocalizationManager: ObservableObject {
+
+    private let key = "AppleLanguages"
+
+    @Published var current: String
+    @Published var locale: Locale
+    @Published var defaultLanguage: LangEnamStatus
 
     init() {
-        onGetDefaultLanguage()
+        let savedLanguage = UserDefaults.standard.stringArray(forKey: key)?.first
+            ?? LangEnamStatus.EN.value
+
+        self.current = savedLanguage
+        self.locale = Locale(identifier: savedLanguage)
+        self.defaultLanguage = LangEnamStatus.from(savedLanguage)
     }
 
     func onSetChangeLangue(_ language: String) {
         current = language
-        locale = Locale(identifier: current)
-        UserDefaults.standard.set([current], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-    }
+        locale = Locale(identifier: language)
+        defaultLanguage = LangEnamStatus.from(language)
 
-    private func onGetDefaultLanguage() {
-        if let savedLanguage = UserDefaults.standard.stringArray(forKey: "AppleLanguages")?.first {
-            current = savedLanguage
-            locale = Locale(identifier: current)
-        }
+        UserDefaults.standard.set([language], forKey: key)
     }
 }

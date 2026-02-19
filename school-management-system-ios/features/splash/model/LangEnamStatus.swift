@@ -1,10 +1,12 @@
-enum LangEnamStatus {
-    case EN, KH
+import SwiftUI
 
-    var value: String {
-        switch self {
-        case .EN: return "en"
-        case .KH: return "km-KH"
-        }
+enum LangEnamStatus: String {
+    case EN = "en"
+    case KH = "km-KH"
+
+    var value: String { rawValue }
+
+    static func from(_ value: String) -> LangEnamStatus {
+        LangEnamStatus(rawValue: value) ?? .EN
     }
 }

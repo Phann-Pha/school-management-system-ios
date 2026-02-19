@@ -3,7 +3,7 @@ import SwiftUI
 
 struct SelectingLanguageView: View {
     @ObservedObject var localize: LocalizationManager
-    
+
     @State private var language: LangEnamStatus = .EN
     @State private var isSelected: Bool = false
 
@@ -12,22 +12,31 @@ struct SelectingLanguageView: View {
             GeometryReader { proxy in
                 ZStack {
                     Color(UIColor(resource: .white))
-                        .opacity(1)
                         .ignoresSafeArea()
 
                     VStack(alignment: .center) {
                         HeaderContentView {}
+
                         Spacer()
+
                         ContentView(size: proxy.size.width * 0.7)
+
                         Spacer()
+
                         FooterContentView(language) { value in
-                            self.language = value
+                            language = value
                             localize.onSetChangeLangue(value.value)
-                            self.isSelected = true
+                            isSelected = true
                         }
                     }
                 }
-            }.navigationDestination(isPresented: $isSelected, destination: { GettingStartedView() })
+            }
+            .navigationDestination(isPresented: $isSelected) {
+                GettingStartedView()
+            }
+            .onAppear {
+                language = localize.defaultLanguage
+            }
         }
     }
 
