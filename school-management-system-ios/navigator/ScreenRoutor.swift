@@ -2,6 +2,6 @@
 import SwiftUI
 
 enum ScreenRouter {
-    case main
+    case onboard
     case language
 }

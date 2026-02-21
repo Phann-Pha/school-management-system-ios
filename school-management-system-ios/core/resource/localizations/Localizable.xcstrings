@@ -116,6 +116,75 @@
         }
       }
     },
+    "OnboardDescription1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitor attendance instantly with up-to-date records, anytime, anywhere."
+          }
+        },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "តាមដានការចូលរួមភ្លាមៗជាមួយនឹងកំណត់ត្រាទាន់សម័យ គ្រប់ពេលវេលា គ្រប់ទីកន្លែង។"
+          }
+        },
+        "km-KH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "តាមដានការចូលរួមភ្លាមៗជាមួយនឹងកំណត់ត្រាទាន់សម័យ គ្រប់ពេលវេលា គ្រប់ទីកន្លែង។"
+          }
+        }
+      }
+    },
+    "OnboardDescription2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow users to check in via QR code, biometrics, or manual entry — your way."
+          }
+        },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ចូលតាមរយៈកូដ QR ជីវមាត្រ ឬបញ្ចូលដោយដៃ — តាមវិធីរបស់អ្នក។"
+          }
+        },
+        "km-KH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ចូលតាមរយៈកូដ QR ជីវមាត្រ ឬបញ្ចូលដោយដៃ — តាមវិធីរបស់អ្នក។"
+          }
+        }
+      }
+    },
+    "OnboardDescription3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generate and export detailed reports in seconds — no more manual work."
+          }
+        },
+        "km" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "បង្កើត និងនាំចេញរបាយការណ៍លម្អិតក្នុងរយៈពេលប៉ុន្មានវិនាទី — មិនមានការងារដោយដៃទៀតទេ។"
+          }
+        },
+        "km-KH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "បង្កើត និងនាំចេញរបាយការណ៍លម្អិតក្នុងរយៈពេលប៉ុន្មានវិនាទី — មិនមានការងារដោយដៃទៀតទេ។"
+          }
+        }
+      }
+    },
     "Skip" : {
       "extractionState" : "manual",
       "localizations" : {

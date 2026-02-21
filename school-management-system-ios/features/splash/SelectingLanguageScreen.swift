@@ -46,7 +46,8 @@ struct SelectingLanguageScreen: View {
             ButtonBack(callback: callback)
             Spacer()
         }
-        .padding([.top, .leading, .trailing], 24)
+        .padding(.horizontal, 24)
+        .padding(.top, 8)
     }
 
     @ViewBuilder
@@ -58,7 +59,7 @@ struct SelectingLanguageScreen: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
 
-        }.buttonStyle(AnimatedButtonStyle())
+        }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
 
     @ViewBuilder

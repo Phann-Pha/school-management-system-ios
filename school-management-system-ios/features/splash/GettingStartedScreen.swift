@@ -4,25 +4,34 @@ import SwiftUI
 struct GettingStartedScreen: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
+    @State private var isClicked: Bool = false
     var body: some View {
-        GeometryReader { proxy in
-            ZStack {
-                Color(UIColor(resource: .white))
-                    .ignoresSafeArea()
+        NavigationStack {
+            GeometryReader { proxy in
+                ZStack {
+                    Color(UIColor(resource: .white))
+                        .ignoresSafeArea()
 
-                VStack(alignment: .center) {
-                    HeaderContentView { presentationMode.wrappedValue.dismiss() }
-                    
-                    Spacer()
-                    
-                    ContentView(size: proxy.size.width * 0.7)
-                    
-                    Spacer()
-                    
-                    FooterContentView {}
+                    VStack(alignment: .center) {
+                        HeaderContentView { presentationMode.wrappedValue.dismiss() }
+
+                        Spacer()
+
+                        ContentView(size: proxy.size.width * 0.7)
+
+                        Spacer()
+
+                        FooterContentView {
+                            isClicked.toggle()
+                        }
+                    }
                 }
             }
-        }.navigationBarBackButtonHidden()
+            .navigationDestination(isPresented: $isClicked) {
+                OnboardScreen()
+            }
+            .navigationBarBackButtonHidden()
+        }
     }
 
     @ViewBuilder
@@ -31,7 +40,8 @@ struct GettingStartedScreen: View {
             Spacer()
             ButtonSkip(callback: callback)
         }
-        .padding([.top, .leading, .trailing], 24)
+        .padding(.horizontal, 24)
+        .padding(.top, 8)
     }
 
     @ViewBuilder
@@ -41,7 +51,7 @@ struct GettingStartedScreen: View {
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(Color(UIColor(resource: .black)))
 
-        }.buttonStyle(AnimatedButtonStyle(cornerRadius: 0.0))
+        }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
 
     @ViewBuilder
@@ -67,14 +77,14 @@ struct GettingStartedScreen: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            GetStartedButton(text: String(localized: .getStarted), callback: callback)
+            GetStartedButton(callback: callback)
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 45)
     }
 
     @ViewBuilder
-    private func GetStartedButton(text: String, callback: @escaping () -> Void) -> some View {
+    private func GetStartedButton(callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
             Text(LocalizedStringKey("GetStarted"))
                 .font(.system(size: 16, weight: .medium))
