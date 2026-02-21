@@ -77,14 +77,14 @@ struct GettingStartedScreen: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
 
-            GetStartedButton(text: String(localized: .getStarted), callback: callback)
+            GetStartedButton(callback: callback)
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 45)
     }
 
     @ViewBuilder
-    private func GetStartedButton(text: String, callback: @escaping () -> Void) -> some View {
+    private func GetStartedButton(callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
             Text(LocalizedStringKey("GetStarted"))
                 .font(.system(size: 16, weight: .medium))
