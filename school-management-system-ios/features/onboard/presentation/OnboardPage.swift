@@ -19,4 +19,12 @@ enum OnboardPage: Int, CaseIterable {
         case .three: "OnboardDescription3"
         }
     }
+    
+    var lottieName: String {
+        return switch self {
+        case .one: "analyze_anim.json"
+        case .two: "scanning_anim.json"
+        case .three: "listing_anim.json"
+        }
+    }
 }

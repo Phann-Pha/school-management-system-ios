@@ -86,7 +86,7 @@ struct OnboardScreen: View {
     private func CardViewTab(size: CGFloat, page: OnboardPage) -> some View {
         VStack(alignment: .center, spacing: 30) {
             VStack(alignment: .center) {
-                LottieView(animation: .named("exam_anim.json"))
+                LottieView(animation: .named(page.lottieName))
                     .playing(loopMode: .loop)
             }
             .aspectRatio(contentMode: .fit)
