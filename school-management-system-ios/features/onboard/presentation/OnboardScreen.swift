@@ -28,7 +28,7 @@ struct OnboardScreen: View {
     
     @ViewBuilder
     private func HeaderContentView(onBack: @escaping () -> Void, onSkip: @escaping () -> Void) -> some View {
-        HStack {
+        HStack(alignment: .center) {
             ButtonBack(callback: onBack)
             Spacer()
             ButtonSkip(callback: onSkip)
