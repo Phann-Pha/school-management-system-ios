@@ -94,6 +94,7 @@ struct OnboardScreen: View {
                         .tag(page.rawValue)
                 }
             }
+            .highPriorityGesture(DragGesture())
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .animation(.spring(), value: currentPage)
         }
