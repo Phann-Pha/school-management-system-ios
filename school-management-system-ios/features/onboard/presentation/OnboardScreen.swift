@@ -36,42 +36,6 @@ struct OnboardScreen: View {
     }
 
     @ViewBuilder
-    private func ContentView(size: CGFloat) -> some View {
-        VStack {
-            TabView(selection: $currentPage) {
-                ForEach(OnboardPage.allCases, id: \.rawValue) { page in
-                    CardViewTab(size: size, page: page)
-                        .tag(page.rawValue)
-                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .animation(.spring(), value: currentPage)
-        }
-    }
-
-    @ViewBuilder
-    private func CardViewTab(size: CGFloat, page: OnboardPage) -> some View {
-        VStack(alignment: .center, spacing: 30) {
-            VStack(alignment: .center) {
-                LottieView(animation: .named("exam_anim.json"))
-                    .playing(loopMode: .loop)
-            }
-            .aspectRatio(contentMode: .fit)
-            .frame(width: size, height: size)
-
-            HStack {
-                Text(LocalizedStringKey("GetStartedDescription"))
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 16, weight: .regular))
-                    .foregroundColor(Color(UIColor(resource: .black)))
-                    .lineSpacing(8)
-            }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 32)
-        }
-    }
-
-    @ViewBuilder
     private func HeaderContentView(onBack: @escaping () -> Void, onSkip: @escaping () -> Void) -> some View {
         HStack(alignment: .center) {
             ButtonBack(callback: onBack)
@@ -103,6 +67,42 @@ struct OnboardScreen: View {
 
         }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
+    
+    @ViewBuilder
+    private func ContentView(size: CGFloat) -> some View {
+        VStack {
+            TabView(selection: $currentPage) {
+                ForEach(OnboardPage.allCases, id: \.rawValue) { page in
+                    CardViewTab(size: size, page: page)
+                        .tag(page.rawValue)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .animation(.spring(), value: currentPage)
+        }
+    }
+
+    @ViewBuilder
+    private func CardViewTab(size: CGFloat, page: OnboardPage) -> some View {
+        VStack(alignment: .center, spacing: 30) {
+            VStack(alignment: .center) {
+                LottieView(animation: .named("exam_anim.json"))
+                    .playing(loopMode: .loop)
+            }
+            .aspectRatio(contentMode: .fit)
+            .frame(width: size, height: size)
+
+            HStack {
+                Text(LocalizedStringKey(page.description))
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundColor(Color(UIColor(resource: .black)))
+                    .lineSpacing(8)
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 32)
+        }
+    }
 
     @ViewBuilder
     private func FooterContentView(callback: @escaping () -> Void) -> some View {
@@ -117,11 +117,18 @@ struct OnboardScreen: View {
     private func NextButton(callback: @escaping () -> Void) -> some View {
         Button(action: callback) {
             Image(systemName: "chevron.forward")
-                .resizable()
+                .foregroundColor(.white)
                 .padding(10)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-
-        }.buttonStyle(AnimatedButtonStyle())
+                .frame(width: 60, height: 60)
+                .background(Color(UIColor(resource: .primary)))
+                .clipShape(RoundedRectangle(cornerRadius: 18))
+                
+        }
+        .buttonStyle(AnimatedButtonStyle())
+        .shadow(color: Color.black.opacity(0.25), radius: 18)
     }
+}
+
+#Preview {
+    OnboardScreen()
 }
