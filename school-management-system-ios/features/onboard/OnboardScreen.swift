@@ -7,8 +7,6 @@ struct OnboardScreen: View {
 
     @State private var currentPage: Int = 0
     @State private var isAnimation: Bool = false
-    @State private var deliveryOffset: Bool = false
-    @State private var trackingProgress: CGFloat = 0.0
 
     var body: some View {
         GeometryReader { proxy in
