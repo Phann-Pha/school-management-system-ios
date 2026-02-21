@@ -6,7 +6,7 @@ struct OnboardScreen: View {
     @Environment(\.presentationMode) private var backStack: Binding<PresentationMode>
 
     @State private var currentPage: Int = 0
-    @State private var animation: Bool = false
+    @State private var isAnimation: Bool = false
     @State private var deliveryOffset: Bool = false
     @State private var trackingProgress: CGFloat = 0.0
 
@@ -27,12 +27,31 @@ struct OnboardScreen: View {
                     ContentView(size: proxy.size.width * 0.7)
 
                     Spacer()
-                    FooterContentView {
+                    FooterContentView(horizental: proxy.size.width * 0.12) {
+                        withAnimation(.spring()) {
+                            if currentPage < OnboardPage.allCases.count - 1 {
+                                currentPage += 1
+
+                                isAnimation = false
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                                    isAnimation = true
+                                })
+                            } else {
+                                // handle finish
+                            }
+                        }
                     }
                 }
             }
-
-        }.navigationBarBackButtonHidden()
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                withAnimation {
+                    isAnimation = true
+                }
+            })
+        }
+        .navigationBarBackButtonHidden()
     }
 
     @ViewBuilder
@@ -67,7 +86,7 @@ struct OnboardScreen: View {
 
         }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
-    
+
     @ViewBuilder
     private func ContentView(size: CGFloat) -> some View {
         VStack {
@@ -91,6 +110,9 @@ struct OnboardScreen: View {
             }
             .aspectRatio(contentMode: .fit)
             .frame(width: size, height: size)
+            .opacity(isAnimation ? 1 : 0)
+            .offset(y: isAnimation ? 0 : 20)
+            .animation(.spring(dampingFraction: 0.8).delay(0.2), value: isAnimation)
 
             HStack {
                 Text(LocalizedStringKey(page.description))
@@ -98,6 +120,9 @@ struct OnboardScreen: View {
                     .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(UIColor(resource: .black)))
                     .lineSpacing(8)
+                    .opacity(isAnimation ? 1 : 0)
+                    .offset(y: isAnimation ? 0 : 20)
+                    .animation(.spring(dampingFraction: 0.8).delay(0.2), value: isAnimation)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 32)
@@ -105,11 +130,13 @@ struct OnboardScreen: View {
     }
 
     @ViewBuilder
-    private func FooterContentView(callback: @escaping () -> Void) -> some View {
-        VStack(alignment: .center) {
+    private func FooterContentView(horizental: CGFloat, callback: @escaping () -> Void) -> some View {
+        HStack(alignment: .center) {
+            DotIndicatorView()
+            Spacer()
             NextButton(callback: callback)
         }
-        .padding(.horizontal, 24)
+        .padding(.horizontal, horizental)
         .padding(.bottom, 45)
     }
 
@@ -122,10 +149,21 @@ struct OnboardScreen: View {
                 .frame(width: 60, height: 60)
                 .background(Color(UIColor(resource: .primary)))
                 .clipShape(RoundedRectangle(cornerRadius: 18))
-                
         }
         .buttonStyle(AnimatedButtonStyle())
         .shadow(color: Color.black.opacity(0.25), radius: 18)
+    }
+
+    @ViewBuilder
+    private func DotIndicatorView() -> some View {
+        HStack(spacing: 8) {
+            ForEach(0 ..< OnboardPage.allCases.count, id: \.self) { index in
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(index == currentPage ? Color(UIColor(resource: .primary)) : Color.gray.opacity(0.3))
+                    .frame(width: currentPage == index ? 45 : 12, height: 12)
+                    .animation(.spring(), value: currentPage)
+            }
+        }
     }
 }
 
