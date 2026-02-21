@@ -33,7 +33,8 @@ struct OnboardScreen: View {
             Spacer()
             ButtonSkip(callback: onSkip)
         }
-        .padding([.top, .leading, .trailing], 24)
+        .padding(.horizontal, 24)
+        .padding(.top, 8)
     }
     
     @ViewBuilder

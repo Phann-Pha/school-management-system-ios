@@ -46,7 +46,8 @@ struct SelectingLanguageScreen: View {
             ButtonBack(callback: callback)
             Spacer()
         }
-        .padding([.top, .leading, .trailing], 24)
+        .padding(.horizontal, 24)
+        .padding(.top, 8)
     }
 
     @ViewBuilder
