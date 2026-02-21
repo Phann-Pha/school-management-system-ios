@@ -4,25 +4,34 @@ import SwiftUI
 struct GettingStartedScreen: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
+    @State private var isClicked: Bool = false
     var body: some View {
-        GeometryReader { proxy in
-            ZStack {
-                Color(UIColor(resource: .white))
-                    .ignoresSafeArea()
+        NavigationStack {
+            GeometryReader { proxy in
+                ZStack {
+                    Color(UIColor(resource: .white))
+                        .ignoresSafeArea()
 
-                VStack(alignment: .center) {
-                    HeaderContentView { presentationMode.wrappedValue.dismiss() }
-                    
-                    Spacer()
-                    
-                    ContentView(size: proxy.size.width * 0.7)
-                    
-                    Spacer()
-                    
-                    FooterContentView {}
+                    VStack(alignment: .center) {
+                        HeaderContentView { presentationMode.wrappedValue.dismiss() }
+
+                        Spacer()
+
+                        ContentView(size: proxy.size.width * 0.7)
+
+                        Spacer()
+
+                        FooterContentView {
+                            isClicked.toggle()
+                        }
+                    }
                 }
             }
-        }.navigationBarBackButtonHidden()
+            .navigationDestination(isPresented: $isClicked) {
+                OnboardScreen()
+            }
+            .navigationBarBackButtonHidden()
+        }
     }
 
     @ViewBuilder

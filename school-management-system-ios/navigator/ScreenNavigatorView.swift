@@ -14,14 +14,8 @@ struct ScreenNavigatorView: View {
         switch navigator.current {
         case .language:
             SelectingLanguageScreen(localize: localize)
-        case .main:
-            OnboardingView(
-                viewmodel: OnboardingViewModel(
-                    usecase: QueryOnboardingUseCase(
-                        service: OnboardingService()
-                    )
-                )
-            )
+        case .onboard:
+            OnboardScreen()
         }
     }
 }
