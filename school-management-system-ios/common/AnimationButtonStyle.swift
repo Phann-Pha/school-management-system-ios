@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct AnimatedButtonStyle: ButtonStyle {
-    var cornerRadius: CGFloat = 16.0
+    var raduis: CGFloat = 16.0
     func makeBody(configuration: Configuration) -> some View {
         return configuration.label
-            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .clipShape(RoundedRectangle(cornerRadius: raduis))
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
             .animation(.linear(duration: 0.1), value: configuration.isPressed)
     }

@@ -51,7 +51,7 @@ struct GettingStartedScreen: View {
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(Color(UIColor(resource: .black)))
 
-        }.buttonStyle(AnimatedButtonStyle(cornerRadius: 0.0))
+        }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
 
     @ViewBuilder

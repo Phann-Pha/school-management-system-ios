@@ -46,7 +46,7 @@ struct OnboardScreen: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
 
-        }.buttonStyle(AnimatedButtonStyle())
+        }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
     
     @ViewBuilder
@@ -56,6 +56,6 @@ struct OnboardScreen: View {
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(Color(UIColor(resource: .black)))
 
-        }.buttonStyle(AnimatedButtonStyle(cornerRadius: 0.0))
+        }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
 }

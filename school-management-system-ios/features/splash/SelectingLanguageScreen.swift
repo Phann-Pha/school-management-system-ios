@@ -59,7 +59,7 @@ struct SelectingLanguageScreen: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
 
-        }.buttonStyle(AnimatedButtonStyle())
+        }.buttonStyle(AnimatedButtonStyle(raduis: 0.0))
     }
 
     @ViewBuilder
